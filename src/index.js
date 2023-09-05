@@ -6,7 +6,12 @@ const fileupload = require("express-fileupload");
 const FileRoutes = require("./routes/FileRoutes");
 
 app.use(express.json());
-app.use(fileupload());
+app.use(
+  fileupload({
+    useTempFiles: true,
+    tempFileDir: "/tmp/",
+  })
+);
 
 app.use("/api/v1/upload", FileRoutes);
 
